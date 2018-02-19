@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.Iterator;
+
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -12,8 +13,8 @@ public class VoteCountReducer extends Reducer<Text, IntWritable, Text, IntWritab
         int voteCount = 0;
 
         IntWritable value;
-        for(Iterator var5 = values.iterator(); var5.hasNext(); voteCount += value.get()) {
-            value = (IntWritable)var5.next();
+        for (Iterator var5 = values.iterator(); var5.hasNext(); voteCount += value.get()) {
+            value = (IntWritable) var5.next();
         }
 
         output.write(key, new IntWritable(voteCount));
