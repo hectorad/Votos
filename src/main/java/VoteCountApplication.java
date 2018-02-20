@@ -12,8 +12,6 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 public class VoteCountApplication extends Configured implements Tool {
-    public VoteCountApplication() {
-    }
 
     public static void main(String[] args) throws Exception {
         int res = ToolRunner.run(new Configuration(), new VoteCountApplication(), args);
@@ -33,7 +31,7 @@ public class VoteCountApplication extends Configured implements Tool {
         job.setReducerClass(VoteCountReducer.class);
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
-        FileInputFormat.setInputPaths(job, new Path[]{new Path(args[0])});
+        FileInputFormat.setInputPaths(job,  new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
         job.setJarByClass(VoteCountApplication.class);
         job.submit();
